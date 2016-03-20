@@ -17,8 +17,8 @@ if [[ -d .git ]]; then
     echo "Set database name '${PGDATABASE}' from git."
 fi
 
-# Wait for linked services to become available.
-# dockerize -wait tcp://elasticsearch:9200 -wait "tcp://${PGHOST}:${PGPORT}" -wait tcp://redis:6379
+# Wait for PostgreSQL to become available.
+dockerize -wait "tcp://${PGHOST}:${PGPORT}"
 
 setup-postgres.sh
 migrate.sh
