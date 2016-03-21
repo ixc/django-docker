@@ -26,4 +26,4 @@ ENTRYPOINT ["entrypoint-base.sh", "entrypoint-django.sh"]
 CMD ["gunicorn.sh"]
 
 # Source.
-COPY . $PROJECT_DIR
+COPY . /opt/django
