@@ -1,8 +1,5 @@
 version: "2"
 services:
   django:
-    build:
-      args:
-        PROJECT_NAME: django
-      context: .
+    build: .
     image: interaction/django:latest

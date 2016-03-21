@@ -18,23 +18,12 @@ RUN wget -O - "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
     && ln -s "/opt/node-v${NODE_VERSION}-linux-x64/bin/node" /usr/local/bin/ \
     && ln -s "/opt/node-v${NODE_VERSION}-linux-x64/bin/npm" /usr/local/bin/
 
+# Environment.
+ENV PATH=/opt/django/bin:$PATH
+
 # Entrypoint.
 ENTRYPOINT ["entrypoint-base.sh", "entrypoint-django.sh"]
 CMD ["gunicorn.sh"]
 
 # Source.
 COPY . $PROJECT_DIR
-
-# ONBUILD #####################################################################
-
-# Build arguments.
-ONBUILD ARG PIP_INDEX_URL=https://pypi.python.org/simple
-ONBUILD ARG PROJECT_NAME=djangoproject
-
-# Environment.
-ONBUILD ENV PROJECT_NAME=$PROJECT_NAME
-ONBUILD ENV PROJECT_DIR=/opt/$PROJECT_NAME
-ONBUILD ENV PATH=$PROJECT_DIR/node_modules/.bin:$PATH
-
-# Workdir.
-ONBUILD WORKDIR $PROJECT_DIR
