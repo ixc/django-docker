@@ -23,7 +23,7 @@ ENV PATH=/opt/django/bin:$PATH
 
 # Entrypoint.
 ENTRYPOINT ["entrypoint-base.sh", "entrypoint-django.sh"]
-CMD ["gunicorn.sh"]
+CMD ["supervisor.sh"]
 
 # Source.
 COPY . /opt/django
