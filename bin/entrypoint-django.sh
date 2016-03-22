@@ -18,7 +18,14 @@ if [[ -d .git ]]; then
 fi
 
 # Wait for PostgreSQL to become available.
-dockerize -wait "tcp://${PGHOST}:${PGPORT}"
+while ! psql -l > /dev/null 2>&1; do
+	if [[ $((${COUNT:-0}+1)) -gt 10 ]]; then
+		echo 'PostgreSQL still not available. Giving up.'
+		exit 1
+	fi
+	echo 'Waiting for PostgreSQL...'
+	sleep 1
+done
 
 setup-postgres.sh
 migrate.sh
