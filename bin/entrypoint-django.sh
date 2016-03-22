@@ -2,20 +2,25 @@
 
 set -e
 
+# Get `PGDATABASE` from 'PROJECT_NAME' and git branch or 'BASE_SETTINGS_MODULE'
+# if not already defined.
+if [[ -z "${PGDATABASE}" ]]; then
+	if [[ -d .git ]]; then
+		export PGDATABASE="${PROJECT_NAME}_$(git rev-parse --abbrev-ref HEAD | sed 's/[^0-9A-Za-z]/_/g')"
+		echo "Derive database name '${PGDATABASE}' from 'PROJECT_NAME' environment variable and git branch."
+	elif [[ -n "${BASE_SETTINGS_MODULE}" ]]; then
+		export PGDATABASE="${PROJECT_NAME}_${BASE_SETTINGS_MODULE}"
+		echo "Derive database name '${PGDATABASE}' from 'PROJECT_NAME' and 'BASE_SETTINGS_MODULE' environment variables."
+	fi
+fi
+
 # PostgreSQL.
-export PGDATABASE="${PGDATABASE:-${PROJECT_NAME}}"
 export PGHOST="${PGHOST:-postgres}"
 export PGPORT="${PGPORT:-5432}"
 export PGUSER="${PGUSER:-postgres}"
 
 # Python.
 export PYTHONHASHSEED=random
-
-# Derive `PGDATABASE` from git branch, if available.
-if [[ -d .git ]]; then
-    export PGDATABASE="${PGDATABASE}_$(git rev-parse --abbrev-ref HEAD | sed 's/[^0-9A-Za-z]/_/g')"
-    echo "Set database name '${PGDATABASE}' from git."
-fi
 
 # Wait for PostgreSQL to become available.
 while ! psql -l > /dev/null 2>&1; do
