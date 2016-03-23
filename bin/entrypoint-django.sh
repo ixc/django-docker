@@ -11,6 +11,9 @@ if [[ -z "${PGDATABASE}" ]]; then
 	elif [[ -n "${BASE_SETTINGS_MODULE}" ]]; then
 		export PGDATABASE="${PROJECT_NAME}_${BASE_SETTINGS_MODULE}"
 		echo "Derive database name '${PGDATABASE}' from 'PROJECT_NAME' and 'BASE_SETTINGS_MODULE' environment variables."
+	else
+		export PGDATABASE="${PROJECT_NAME}"
+		echo "Derive database name '${PGDATABASE}' from 'PROJECT_NAME' environment variable."
 	fi
 fi
 
