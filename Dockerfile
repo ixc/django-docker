@@ -1,4 +1,4 @@
-FROM interaction/base:latest
+FROM interaction/base:0.1
 
 # Base image for Django projects with Git, Node.js, and PostgreSQL.
 
