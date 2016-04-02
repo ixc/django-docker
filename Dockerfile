@@ -18,7 +18,4 @@ RUN wget -O - "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-li
 
 ENV PATH=/opt/django/bin:$PATH
 
-ENTRYPOINT ["entrypoint-base.sh", "entrypoint-django.sh"]
-CMD ["supervisor.sh"]
-
 COPY . /opt/django/
