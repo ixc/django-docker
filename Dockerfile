@@ -27,4 +27,4 @@ ENTRYPOINT ["entrypoint-base.sh", "entrypoint-django.sh"]
 CMD ["supervisor.sh"]
 
 # Source.
-COPY . /opt/django
+COPY . /opt/django/
