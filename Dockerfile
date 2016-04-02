@@ -1,6 +1,6 @@
 FROM interaction/base:latest
 
-# Base image for Django projects with Git, Node.js, and PostgreSQL.
+# Base image for Django projects with Node.js, PostgreSQL client, and Python.
 
 # System packages.
 RUN apt-get update \
