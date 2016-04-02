@@ -5,9 +5,9 @@ FROM interaction/base:latest
 # System packages.
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        git \
         postgresql-client \
         python \
+        python-dev \
     && rm -rf /var/lib/apt/lists/* \
     # The `apt-get` version of Pip is old, so install it manually.
     && (wget -O - https://bootstrap.pypa.io/get-pip.py | python)
