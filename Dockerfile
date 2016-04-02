@@ -10,7 +10,8 @@ RUN apt-get update \
         python-dev \
     && rm -rf /var/lib/apt/lists/* \
     # The `apt-get` version of Pip is old, so install it manually.
-    && (wget -O - https://bootstrap.pypa.io/get-pip.py | python)
+    && (wget -O - https://bootstrap.pypa.io/get-pip.py | python) \
+    && pip install pip-accel[s3] virtualenv
 
 # Node.js.
 ENV NODE_VERSION=4.3.2
