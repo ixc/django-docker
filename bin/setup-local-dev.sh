@@ -44,7 +44,7 @@ fi
 # Python virtualenv.
 if [[ ! -d venv ]]; then
     echo 'Python virtualenv does not exist. Create.'
-    virtualenv --system-site-packages venv
+    virtualenv venv
     truncate -s 0 venv.md5
 else
     echo 'Python virtualenv already exists. Skip.'
