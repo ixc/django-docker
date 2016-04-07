@@ -10,7 +10,8 @@ set -e
 
 cd "${PROJECT_DIR}/var"
 
-export PATH="${PROJECT_DIR}/var/node_modules/.bin:${PROJECT_DIR}/var/venv/bin:$PATH"
+export NODE_MODULES_BIN=${PROJECT_DIR}/var/node_modules/.bin
+export PATH="${NODE_MODULES_BIN}:${PROJECT_DIR}/var/venv/bin:$PATH"
 
 # Create empty initial MD5 signatures.
 for FILE in bower.json package.json venv
