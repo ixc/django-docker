@@ -6,6 +6,8 @@
 
 # Usage: wget -O - https://raw.githubusercontent.com/ixc/django-docker/master/bootstrap.sh | sh -s {commit}
 
+set -ex
+
 COMMIT=${1:-master}
 
 if [ "$COMMIT" = "master" ]; then
