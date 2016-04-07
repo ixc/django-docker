@@ -8,6 +8,10 @@
 
 COMMIT=${1:-master}
 
+if [[ "$COMMIT" == "master" ]]; then
+    >&2 echo "Downloading 'master' version of scripts. You should specify a specific commit for repeatable builds."
+fi
+
 # System packages.
 apt-get update
 apt-get install -y --no-install-recommends \
