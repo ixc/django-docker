@@ -34,8 +34,8 @@ ln -s "/opt/node-v${NODE_VERSION}-linux-x64/bin/npm" /usr/local/bin/
 
 # Scripts.
 cd /usr/local/bin
-wget -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/entrypoint-django.sh"
-wget -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/migrate.sh"
-wget -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/setup-local-dev.sh"
-wget -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/supervisor.sh"
+wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/entrypoint-django.sh"
+wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/migrate.sh"
+wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/setup-local-dev.sh"
+wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/supervisor.sh"
 chmod +x *.sh
