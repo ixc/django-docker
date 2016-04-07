@@ -19,7 +19,7 @@ apt-get update
 apt-get install -y --no-install-recommends \
     postgresql-client \
     python \
-    python-dev \
+    python-dev
 rm -rf /var/lib/apt/lists/*
 
 # Python packages.
