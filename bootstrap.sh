@@ -4,7 +4,9 @@
 # it, which would require a complete rebuild of all derivative images for a
 # simple script change.
 
-# Usage: wget -O - https://raw.githubusercontent.com/ixc/django-docker/master/bootstrap.sh | sh
+# Usage: wget -O - https://raw.githubusercontent.com/ixc/django-docker/master/bootstrap.sh | sh -s {commit}
+
+COMMIT=${1:-master}
 
 # System packages.
 apt-get update
@@ -27,9 +29,9 @@ ln -s "/opt/node-v${NODE_VERSION}-linux-x64/bin/npm" /usr/local/bin/
 # Scripts.
 mkdir -p /opt/django/bin
 cd /opt/django/bin
-wget https://raw.githubusercontent.com/ixc/base-docker/master/bin/entrypoint-django.sh
-wget https://raw.githubusercontent.com/ixc/base-docker/master/bin/migrate.sh
-wget https://raw.githubusercontent.com/ixc/base-docker/master/bin/setup-local-dev.sh
-wget https://raw.githubusercontent.com/ixc/base-docker/master/bin/supervisor.sh
+wget "https://raw.githubusercontent.com/ixc/base-docker/${COMMIT}/bin/entrypoint-django.sh"
+wget "https://raw.githubusercontent.com/ixc/base-docker/${COMMIT}/bin/migrate.sh"
+wget "https://raw.githubusercontent.com/ixc/base-docker/${COMMIT}/bin/setup-local-dev.sh"
+wget "https://raw.githubusercontent.com/ixc/base-docker/${COMMIT}/bin/supervisor.sh"
 chmod +x /opt/django/bin/*.sh
 export PATH=/opt/django/bin:$PATH
