@@ -27,7 +27,7 @@ wget -nv -O - https://bootstrap.pypa.io/get-pip.py | python
 pip install pip-accel[s3] virtualenv
 
 # Node.js
-NODE_VERSION=4.3.2
+NODE_VERSION=4.4.2
 wget -O - "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz" | tar -Jx -C /opt/ -f -
 ln -s "/opt/node-v${NODE_VERSION}-linux-x64/bin/node" /usr/local/bin/
 ln -s "/opt/node-v${NODE_VERSION}-linux-x64/bin/npm" /usr/local/bin/
