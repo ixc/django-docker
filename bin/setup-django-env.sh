@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "# ${0}"
+
 set -e
 
 # Get `PGDATABASE` from 'PROJECT_NAME' and git branch or 'BASE_SETTINGS_MODULE'
@@ -34,8 +36,5 @@ while ! psql -l > /dev/null 2>&1; do
 	echo 'Waiting for PostgreSQL...'
 	sleep 1
 done
-
-setup-postgres.sh
-migrate.sh
 
 exec "$@"

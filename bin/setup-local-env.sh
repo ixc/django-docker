@@ -1,10 +1,12 @@
 #!/bin/bash
 
-# Setup local development environment.
+# Setup local development environment and execute command.
 #
 # Create a virtualenv and conditionally install Node.js packages, Bower
-# components, and Python packages, when `package.json`, `bower.json` and
-# `setup.py` have changed.
+# components, and Python packages, when `package.json`, `bower.json`,
+# `requirements*.txt`, or `setup.py` have changed.
+
+echo "# ${0}"
 
 set -e
 
@@ -59,3 +61,5 @@ if ! md5sum -c --status venv.md5; then
 else
     echo 'Python packages are already up to date. Skip.'
 fi
+
+exec "$@"

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "# ${0}"
+
 set -e
 
 cd "${PROJECT_DIR}"
@@ -15,3 +17,5 @@ else
     python manage.py migrate --list > var/migrate.txt
     md5sum var/migrate.txt > var/migrate.md5
 fi
+
+exec "$@"
