@@ -10,6 +10,13 @@ echo "# ${0}"
 
 set -e
 
+# There is no need to setup the local env when the source directory is not
+# owned by the current user, which means it is not bind mounted from the host.
+if [[ $(stat -c '%u' "${PROJECT_DIR}") != $(id -u) ]]; then
+    echo "Directory '${PROJECT_DIR}' is not bind mounted from the host. Skip."
+    exec "$@"
+fi
+
 cd "${PROJECT_DIR}/var"
 
 export NODE_MODULES_BIN=${PROJECT_DIR}/var/node_modules/.bin
