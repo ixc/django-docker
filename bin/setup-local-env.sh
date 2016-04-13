@@ -69,4 +69,6 @@ else
     echo 'Python packages are already up to date. Skip.'
 fi
 
+cd "${PROJECT_DIR}"
+
 exec "$@"
