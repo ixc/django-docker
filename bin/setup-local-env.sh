@@ -10,6 +10,12 @@ echo "# ${0}"
 
 set -e
 
+# Skip when explicitly requested.
+if [[ -n "${SETUP_LOCAL_ENV_SKIP}" ]]; then
+    echo "SETUP_LOCAL_ENV_SKIP environment variable is set. Skip."
+    exec "$@"
+fi
+
 # There is no need to setup the local env when the source directory is not
 # owned by the current user, which means it is not bind mounted from the host.
 if [[ $(stat -c '%u' "${PROJECT_DIR}") != $(id -u) ]]; then
