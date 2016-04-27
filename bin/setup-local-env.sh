@@ -69,7 +69,7 @@ fi
 # Python packages.
 if ! md5sum -c --status venv.md5; then
     echo 'Python packages are out of date. Install.'
-    pip install -r ../requirements.txt -e ..
+    pip-accel install -r ../requirements.txt -e ..
     md5sum ../requirements*.txt ../setup.py > venv.md5
 else
     echo 'Python packages are already up to date. Skip.'
