@@ -67,7 +67,7 @@ else
 fi
 
 # Python packages.
-if ! md5sum -c --status venv.md5; then
+if [[ $(md5sum ../requirements*.txt ../setup.py) != $(cat venv.md5) ]]; then
     echo 'Python packages are out of date. Install.'
     pip-accel install -r ../requirements.txt
     if [[ -f ../requirements-local.txt ]]; then
