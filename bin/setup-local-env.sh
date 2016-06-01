@@ -61,6 +61,9 @@ fi
 if [[ ! -d venv ]]; then
     echo 'Python virtualenv does not exist. Create.'
     virtualenv venv --system-site-packages
+    # Because `pip-accel` wraps pip, we need to reinstall it into the venv to
+    # ensure packages installed via `pip-accel` get installed into the venv.
+    pip install pip-accel
     truncate -s 0 venv.md5
 else
     echo 'Python virtualenv already exists. Skip.'
