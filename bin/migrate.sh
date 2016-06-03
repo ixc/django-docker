@@ -6,6 +6,12 @@ set -e
 
 cd "${PROJECT_DIR}"
 
+# For Django 1.6 and below, we can't tell if apps without migrations need to be
+# synced, so we always run `syncdb`.
+if [[ "$(django-admin.py --version)" < 1.7 ]]; then
+    python manage.py syncdb
+fi
+
 touch var/migrate.md5
 python manage.py migrate --list > var/migrate.txt
 
