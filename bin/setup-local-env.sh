@@ -48,7 +48,8 @@ else
 fi
 
 # Bower components.
-if [[ ! -d bower_components ]] || ! md5sum -c --status bower.json.md5; then
+BOWER_DIR=$(jq -r '.directory' ../.bowerrc 2> /dev/null)
+if [[ ! -d ${BOWER_DIR:-bower_components} ]] || ! md5sum -c --status bower.json.md5; then
     echo 'Bower components are out of date. Install.'
     cp -f ../bower.json .
     bower install --allow-root
