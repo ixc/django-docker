@@ -73,11 +73,10 @@ fi
 if [[ $(md5sum ../requirements*.txt ../setup.py) != $(cat venv.md5) ]]; then
     echo 'Python packages are out of date. Install.'
     cd ..  # Change directory because requirements.txt might have relative paths
-    pip-accel install -r requirements.txt
     if [[ -f requirements-local.txt ]]; then
         pip-accel install -r requirements-local.txt
     fi
-    pip install -e .
+    pip-accel install -r requirements.txt -e .
     cd -  # Change back to var directory
     md5sum ../requirements*.txt ../setup.py > venv.md5
 else
