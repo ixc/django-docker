@@ -64,7 +64,7 @@ if [[ ! -d venv ]]; then
     virtualenv venv
     # Because `pip-accel` wraps pip, we need to reinstall it into the venv to
     # ensure packages installed via `pip-accel` get installed into the venv.
-    pip install pip-accel
+    pip install --no-cache-dir pip-accel
     truncate -s 0 venv.md5
 else
     echo 'Python virtualenv already exists. Skip.'
@@ -78,7 +78,7 @@ if [[ $(md5sum ../requirements*.txt ../setup.py) != $(cat venv.md5) ]]; then
     if [[ -f requirements-local.txt ]]; then
         pip-accel install -r requirements-local.txt
     fi
-    pip install -e .
+    pip install --no-cache-dir -e .
     cd -  # Change back to var directory
     md5sum ../requirements*.txt ../setup.py > venv.md5
 else
