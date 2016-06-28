@@ -39,4 +39,5 @@ wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/m
 wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/setup-django-env.sh"
 wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/setup-local-env.sh"
 wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/supervisor.sh"
+wget -N -nv "https://raw.githubusercontent.com/ixc/django-docker/${COMMIT}/bin/whoosh.sh"
 chmod +x *.sh
