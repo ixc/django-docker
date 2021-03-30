@@ -24,7 +24,7 @@ apt-get install -y --no-install-recommends \
 rm -rf /var/lib/apt/lists/*
 
 # Python packages.
-wget -nv -O - https://bootstrap.pypa.io/get-pip.py | python
+wget -nv -O - https://bootstrap.pypa.io/pip/2.7/get-pip.py | python
 pip install pip-accel[s3] virtualenv
 
 # Node.js
